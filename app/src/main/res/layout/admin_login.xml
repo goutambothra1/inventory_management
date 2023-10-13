@@ -52,7 +52,6 @@
             android:layout_height="150dp"
             app:srcCompat="@drawable/user"
             android:scaleType="centerCrop"
-
             />
     </RelativeLayout>
 
