@@ -2,7 +2,10 @@ package com.example.inventory_management;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -48,18 +51,31 @@ public class MainActivity extends AppCompatActivity {
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(InputEmail.getText().toString().equals("jain28")&&InputPassword.getText().toString().equals("1234"))
-                {
-                    Toast.makeText(MainActivity.this,"login successful",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),home_page.class);
-                    startActivity(intent);
+                String email = InputEmail.getText().toString();
+                String password = InputPassword.getText().toString();
 
+                // Open the database for reading
+                SQLiteDatabase db = openOrCreateDatabase("RegisterDB", Context.MODE_PRIVATE, null);
+
+                // Query the database to check if the provided email and password exist in the users table
+                Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
+
+                if (cursor.moveToFirst()) {
+                    // If cursor is not empty, it means there is a matching record
+                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), home_page.class);
+                    startActivity(intent);
+                } else {
+                    // No matching record found
+                    Toast.makeText(MainActivity.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    Toast.makeText(MainActivity.this,"login unsuccessful",Toast.LENGTH_SHORT).show();
-                }
+
+                // Close the cursor and the database
+                cursor.close();
+                db.close();
             }
         });
+
 
     }
 
