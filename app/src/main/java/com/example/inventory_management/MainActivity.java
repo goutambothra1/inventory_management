@@ -54,27 +54,34 @@ public class MainActivity extends AppCompatActivity {
                 String email = InputEmail.getText().toString();
                 String password = InputPassword.getText().toString();
 
-                // Open the database for reading
-                SQLiteDatabase db = openOrCreateDatabase("RegisterDB", Context.MODE_PRIVATE, null);
+                try {
+                    // Open the database for reading
+                    SQLiteDatabase db = openOrCreateDatabase("RegisterDB", Context.MODE_PRIVATE, null);
 
-                // Query the database to check if the provided email and password exist in the users table
-                Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
+                    // Query the database to check if the provided email and password exist in the users table
+                    Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
 
-                if (cursor.moveToFirst()) {
-                    // If cursor is not empty, it means there is a matching record
-                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), home_page.class);
-                    startActivity(intent);
-                } else {
-                    // No matching record found
-                    Toast.makeText(MainActivity.this, "Login unsuccessful", Toast.LENGTH_SHORT).show();
+                    if (cursor.moveToFirst()) {
+                        // If cursor is not empty, it means there is a matching record
+                        Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), home_page.class);
+                        startActivity(intent);
+                    } else {
+                        // No matching record found
+                        Toast.makeText(MainActivity.this, "Login unsuccessful. Sign up with your details.", Toast.LENGTH_SHORT).show();
+                    }
+
+                    // Close the cursor and the database
+                    cursor.close();
+                    db.close();
+                } catch (Exception e) {
+                    // Catch any exceptions that occur (e.g., table not found)
+                    e.printStackTrace();
+                    Toast.makeText(MainActivity.this, "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
                 }
-
-                // Close the cursor and the database
-                cursor.close();
-                db.close();
             }
         });
+
 
 
     }
