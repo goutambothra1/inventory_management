@@ -21,8 +21,10 @@ public class activity_splash extends AppCompatActivity {
                     SQLiteDatabase db = openOrCreateDatabase("RegisterDB", Context.MODE_PRIVATE, null);
 
                     // Create the 'users' table if it doesn't exist
-                    db.execSQL("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT,branch_name TEXT,dept_name TEXT, email TEXT, password TEXT, cpassword TEXT);");
+                    db.execSQL("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT,branch_name TEXT,dept_name TEXT, email TEXT,phone_number TEXT UNIQUE, password TEXT, cpassword TEXT);");
                     db.execSQL("CREATE TABLE IF NOT EXISTS admin (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT);");
+                    db.execSQL("CREATE TABLE IF NOT EXISTS admin_stock  ( STOCK_ID INTEGER PRIMARY KEY AUTOINCREMENT, admin_id INTEGER, item_name TEXT, Quantity  INTEGER, FOREIGN KEY (admin_id) REFERENCES admin(id));"); // Assuming Admin table has admin_id as primary key")
+                    db.execSQL("CREATE TABLE IF NOT EXISTS admin_history (admin_history_id INTEGER PRIMARY KEY AUTOINCREMENT,stock_id INTEGER ,item_id TEXT, item_name TEXT, department TEXT, quantity INTEGER,date TEXT,FOREIGN KEY (stock_id) REFERENCES admin_stock(stock_id));");
                     // Check if the admin already exists
                     Cursor cursor = db.rawQuery("SELECT * FROM admin", null);
 

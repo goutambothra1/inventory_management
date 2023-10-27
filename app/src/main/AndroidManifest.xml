@@ -18,6 +18,16 @@
             android:exported="true"/>
         <activity android:name=".home_page"
             android:exported="true"/>
+        <activity android:name=".add_product_request"
+            android:exported="true"/>
+        <activity android:name=".adminpage"
+            android:exported="true"/>
+        <activity android:name=".stock_in_out"
+            android:exported="true"/>
+        <activity android:name=".user_profile"
+            android:exported="true"/>
+        <activity android:name=".admin_main_history"
+            android:exported="true"/>
         <activity android:name=".MainActivity"
             android:exported="true"/>
 
