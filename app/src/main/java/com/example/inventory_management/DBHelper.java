@@ -53,6 +53,27 @@ public abstract class DBHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+    public Cursor getUserDetails() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM users;";
+        return db.rawQuery(query, null);
+    }
+    //update user profile user_profile.java user email and phone number
+    public boolean updateUserDetails(int id,String newEmail, String newPhoneNumber) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("email", newEmail);
+        values.put("phone_number", newPhoneNumber);
+
+        // Assuming you have a column named 'user_id' to uniquely identify users
+        String whereClause = "id = ?";
+        String[] whereArgs = new String[] { String.valueOf(id) }; // Replace with actual user ID
+
+        int rowsAffected = db.update("users", values, whereClause, whereArgs);
+        db.close();
+
+        return rowsAffected > 0;
+    }
     public boolean checkusers(String Branch){
         SQLiteDatabase myDB=this.getWritableDatabase();
         Cursor curson=myDB.rawQuery("SELECT * from users where branch_name=?",new String[]{Branch});

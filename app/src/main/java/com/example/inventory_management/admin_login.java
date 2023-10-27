@@ -39,6 +39,8 @@ public class admin_login extends AppCompatActivity {
 
                     Cursor cursor = db.rawQuery("SELECT * FROM admin WHERE username=? AND password=?", new String[]{user, pass});
                     if (cursor.moveToFirst()) {
+                        Intent intent = new Intent(admin_login.this,adminpage.class);
+                       startActivity(intent);
                         Toast.makeText(admin_login.this, "Login successful", Toast.LENGTH_SHORT).show();
                         // Add your code to navigate to the next activity here
                     } else {

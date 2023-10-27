@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     if (cursor.moveToFirst()) {
                         // If cursor is not empty, it means there is a matching record
                         Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), home_page.class);
+                        Intent intent = new Intent(getApplicationContext(), add_product_request.class);
                         startActivity(intent);
                     } else {
                         // No matching record found

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3D3D3"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/addproducttext"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:background="#FFFFFFFF"
+
+        android:text="Add Product Request"
+
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="70dp"
+        android:text="Product Name"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="232dp"
+        android:layout_height="51dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="100dp"
+        android:background="@android:drawable/editbox_background_normal"
+
+        android:ems="10"
+        android:hint="Ex.Fans"
+        android:inputType="text"
+        android:shadowRadius="0"
+        android:text=""
+        app:cornerRadius="10dp" />
+
+    <!-- Dynamically add EditTexts for extra items here -->
+
+
+    <LinearLayout
+        android:id="@+id/extraItemsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editText1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="6dp"
+        android:orientation="vertical">
+        <!-- EditText fields for extra items (added dynamically) will go here -->
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textqty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/addproducttext"
+        android:layout_marginLeft="259dp"
+        android:layout_marginTop="70dp"
+        android:text="Quantity"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/editqty1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@id/editText1"
+        android:layout_marginLeft="233dp"
+        android:layout_marginTop="100dp"
+        android:background="@android:drawable/editbox_background_normal"
+
+        android:ems="10"
+        android:hint="30"
+
+        android:inputType="text"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btncancel"
+
+
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/btnaddmore"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="51dp"
+        android:backgroundTint="#FFFFFFFF"
+        android:text="Cancel"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnsubmit"
+        android:layout_width="301dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btncancel"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginStart="66dp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="105dp"
+        android:backgroundTint="#4051AF"
+        android:text="Submit"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        style="@style/button"/>
+
+    <Button
+        android:id="@+id/btnaddmore"
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginStart="61dp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="289dp"
+        android:layout_marginEnd="49dp"
+        android:backgroundTint="#4051AF"
+        android:text="Add More"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        style="@style/button"/>
+
+    <ImageView
+        android:id="@+id/imagearrow"
+        android:layout_width="60dp"
+        android:layout_height="51dp"
+
+        android:src="@drawable/arrow" />
+
+
+    <TextView
+        android:id="@+id/textViewdown"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="755dp"
+        android:background="#FFFFFFFF"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="678dp"
+        android:background="@color/white"
+        android:text="" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="680dp"
+        app:srcCompat="@drawable/home2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="680dp"
+        app:srcCompat="@drawable/updown" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="680dp"
+        app:srcCompat="@drawable/plus" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="680dp"
+        app:srcCompat="@drawable/usersimple" />
+
+
+</RelativeLayout>
